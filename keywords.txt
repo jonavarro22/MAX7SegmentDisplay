@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-DigitLedDisplay	KEYWORD1
+MAX7SegmentDisplay	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -19,6 +19,8 @@ on	KEYWORD2
 off	KEYWORD2
 printDigit	KEYWORD2
 write	KEYWORD2
+ReverseDirection	KEYWORD2
+setReverseDirection	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

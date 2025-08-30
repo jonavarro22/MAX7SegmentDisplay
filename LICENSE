@@ -1,6 +1,9 @@
 DigitLedDisplay.h - The library for 8 bit 7-segment digital LED display module.
 Copyright (c) 2017 Ozhan Duran
 
+Forked and maintained by Joaquin
+Copyright (c) 2025 Joaquin
+
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
