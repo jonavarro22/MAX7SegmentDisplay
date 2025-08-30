@@ -1,22 +1,11 @@
 #include "MAX7SegmentDisplay.h"
 
-#if defined(MOSI) && defined(SS) && defined(SCK)
-  #define DIN MOSI
-  #define CS SS
-  #define CLK SCK
-#elif defined(PIN_SPI_MOSI) && defined(PIN_SPI_SS) && defined(PIN_SPI_SCK)
-  #define DIN PIN_SPI_MOSI
-  #define CS PIN_SPI_SS
-  #define CLK PIN_SPI_SCK
-#elif defined(MOSI_PIN) && defined(SS_PIN) && defined(SCK_PIN)
-  #define DIN MOSI_PIN
-  #define CS SS_PIN
-  #define CLK SCK_PIN
-#else            // fallback pins (common wiring for ATMEGA 328P like in an Arduino Uno)
-  #define DIN 11 // Also known as MOSI, the data input for the chip
-  #define CS 8   // Also known as LOAD, with this we select the chip
-  #define CLK 13 // Also known as SCLK, the clock input for the chip
-#endif
+// Common wiring for ATMEGA 328P like in an Arduino Uno
+#define DIN 11 // Also known as MOSI, the data input for the chip
+#define CS 8   // Also known as LOAD, with this we select the chip
+#define CLK 13 // Also known as SCLK, the clock input for the chip
+
+bool direction = false;
 
 // Initialize display with detected or fallback pins (DIN/MOSI, CS/LOAD, CLK)
 MAX7SegmentDisplay max = MAX7SegmentDisplay(DIN, CS, CLK);
@@ -41,7 +30,9 @@ void setup() {
 
 void loop() {
 
-  Serial.println("Printing in default mode: ");
+  Serial.print("Printing with direction: ");
+  Serial.println(direction);
+  max.setReverseDirection(direction);
 
   Serial.println(12345678);
   max.printDigit(12345678);
@@ -84,5 +75,7 @@ void loop() {
   Serial.println("Clearing display:");
   max.clear();
   delay(1000);
+
+  direction = !direction;
 
 }

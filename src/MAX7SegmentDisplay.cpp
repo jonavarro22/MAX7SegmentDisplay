@@ -72,18 +72,18 @@ void MAX7SegmentDisplay::printDigit(long number, byte startDigit) {
     int parseInt;
     char str[2];
     if(reverseDirection) {
-        for(int i = figure.length() - 1; i >= 0; i--) {
-            str[0] = figure[i];
+        for(int i = 0; i < figureLength; i++) {
+            str[0] = figure[figureLength - i - 1];
             str[1] = '\0';
             parseInt = (int) strtol(str, NULL, 10);
             table(figureLength - i + startDigit, parseInt);
         }
     } else {
-        for(int i = 0; i < figure.length(); i++) {
+        for(int i = 0; i < figureLength; i++) {
             str[0] = figure[i];
             str[1] = '\0';
             parseInt = (int) strtol(str, NULL, 10);
-            table(i + startDigit, parseInt);
+            table(figureLength - i + startDigit, parseInt);
         }
     }
 }
